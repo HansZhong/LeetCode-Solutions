@@ -11,7 +11,7 @@ This Repository is created to record my algorithm exercising experiences on Leet
 * 类似的使用前缀和的想法在`积分图`中也有应用
 * 算法复杂度为`O(n)`
 
-### 1866. 恰有k根木棍可以看到的排列数目 \[[题目](https://leetcode-cn.com/problems/number-of-ways-to-rearrange-sticks-with-k-sticks-visible/)]\[[题解](https://github.com/HansZhong/LeetCode-Solutions/blob/main/Solutions/1866.py)]\[[优化题解](https://github.com/HansZhong/LeetCode-Solutions/blob/main/Solutions/1866new.py)]
+### 1866. 恰有k根木棍可以看到的排列数目 \[[题目](https://leetcode-cn.com/problems/number-of-ways-to-rearrange-sticks-with-k-sticks-visible/)]\[[题解](./Solutions/1866.py)]\[[优化题解](./Solutions/1866new.py)]
 解题思路：
 * 本题是典型的动态规划问题，原因如下：最长的木棍一定可以看到，最长的木棍后面的木棍一定看不到。因此对于`(n,k)`问题（n根木棍中恰有k根木棍可以看到），最长的木棍共有`(n-k+1)`种放法（若最长的木棍放在小于k的位置则一定不满足`(n,k)`）若最长的木棍放在第i个位置，则最长的木棍前面的i-1根木棍构成子问题`(i-1,k-1)`，而最长的木棍后面的n-i根木棍共有`A(n-1,n-i)`种放法。故动态规划的递推式为：`NUM(n,k)=∑_i=k^n of [NUM(i-1,k-1) * A(n-1,n-i)]`
 * 由于需要用到阶乘，且观察发现`NUM(i,1)`的值对应`(i-1)!`，可以重复利用减少计算量。
